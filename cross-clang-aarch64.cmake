@@ -1,0 +1,17 @@
+set(HSDIS_TRIPLET aarch64-linux-gnu)
+set(HSDIS_SYSROOT /usr/${HSDIS_TRIPLET})
+set(HSDIS_ARCH AArch64 CACHE STRING "" FORCE)
+
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR aarch64)
+set(CMAKE_PREFIX_PATH ${HSDIS_SYSROOT})
+set(CMAKE_C_COMPILER_TARGET ${HSDIS_TRIPLET})
+set(CMAKE_CXX_COMPILER_TARGET ${HSDIS_TRIPLET})
+add_compile_options(
+    -isystem ${HSDIS_SYSROOT}/include/c++/9/${HSDIS_TRIPLET}
+    --sysroot=${HSDIS_SYSROOT}
+    --target=${HSDIS_TRIPLET}
+)
+
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
